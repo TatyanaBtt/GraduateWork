@@ -1,13 +1,16 @@
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.junit5.SoftAssertsExtension;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
 
 @ExtendWith({SoftAssertsExtension.class})
@@ -16,25 +19,28 @@ public class ThreeTestForTop {
     @BeforeAll
     static void AnderTest() {
         SelenideLogger.addListener("allure", new AllureSelenide());
-        baseUrl = "https://msk.top-academy.ru/";
+        Configuration.baseUrl = "https://msk.top-academy.ru/";
+        Configuration.pageLoadTimeout = 50000;
+    }
+    @BeforeEach
+    public void beforeEach() {
+        open("");
     }
 
     @Test
     void SchoolTest() {
-        open(baseUrl);
-        sleep(10000);
+
         $(byText("Принять")).click();
         $("#academy_app > header > div > div.header__bottom > nav > ul > li:nth-child(7) > a").click();
         $(byText("Учись как удобно: очно, дистанционно или смотри уроки в записи")).shouldBe(exist);
-        $(byText("Для взрослых")).click();
-        $(byText("Индивидуальное обучение")).shouldBe(exist);
-        $(byText("Корпоративное обучение")).shouldBe(exist);
+        $(withText("Для взрослых")).shouldBe(exist);
+        $(byText("Популярные статьи")).shouldBe(exist);
+        $(byText("Начни бесплатно")).shouldBe(exist);
     }
 
     @Test
     void StartTest() {
-        open(baseUrl);
-        sleep(10000);
+
         $(byText("Принять")).click();
         $("[id=form-call-popup]").click();
         $("#academy_app > header > div > div.header-content > form > div > div:nth-child(1) > input").setValue("Петр");
@@ -47,8 +53,7 @@ public class ThreeTestForTop {
 
     @Test
     void SeeTest() {
-        open(baseUrl);
-        sleep(10000);
+
         $(byText("Принять")).click();
         $(byText("Показать все (34)")).click();
         $(byText("Контакты")).shouldBe(exist);
@@ -56,10 +61,6 @@ public class ThreeTestForTop {
         $(byText("Филиалы в других городах")).shouldBe(exist);
 
     }
-
-
-
-
 
     }
 
