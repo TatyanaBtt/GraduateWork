@@ -25,10 +25,14 @@ public class TopMain {
         $("#phone_popup_call").setValue(strPhone);
     }
     public void agreement(){
-        $("#call_form").should(text("Согласен!")).click();
+        $("div.gdpr-policy.gdpr-policy--call-form > label.gdpr-policy__label.gdpr-policy__label--call-form > span.gdpr-policy__checkbox-icon.checkbox-policy").click();
     }
     public void waitingCall(){
-        $(withText("Жду звонка")).click();
+        $("div.popup-form__set-inputs.popup-form__set-inputs--form-call > button.popup-form__btn").click();
+    }
+    public void message_wait_for_call(){
+        $(".message-title").should(exist);
+        $(".message-title").should(text("Ожидайте звонка"));
     }
     public void helpWithCourses(){
         $(withText("Нужна помощь с курсами")).click();
@@ -58,7 +62,10 @@ public class TopMain {
         se.setValue(strEmail);
     }
     public void send(){
-        $(".application-block").should(text("Отправить")).click();
+        $("form.application-input-container.form_consultation > button.btn-application").click();
+    }
+    public void message_thank_you(){
+        $(".message-title").should(text("Спасибо за запрос."));
     }
     public void forChildren1(){
         $("div.flex-row > a[href=\"/IT_courses_for_children\"]").click();
