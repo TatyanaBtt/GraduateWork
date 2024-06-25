@@ -23,16 +23,16 @@ public class GraduateWorkPO {
     public void beforeEach() {
         open("");
     }
-
     @Test
     void order_a_call_back(){
         TopMain tm = new TopMain();
         tm.cookies();
         tm.backCall();
         tm.collForm();
-        tm.numberPhone("9851236588");
+        tm.numberPhone("79851236588");
         tm.agreement();
         tm.waitingCall();
+        tm.message_wait_for_call();
     }
     @Test
     void helpWithCourses(){
@@ -41,10 +41,10 @@ public class GraduateWorkPO {
         tm.helpWithCourses();
         tm.form_help_you_choose();
         tm.enterName("Пользователь_1");
-        tm.enterPhone("9851234567");
-        tm.enterEmail("9851234567@mail.ru");
+        tm.enterPhone("79031234887");
+        tm.enterEmail("98512567@mail.ru");
         tm.send();
-
+        tm.message_thank_you();
     }
     @Test
     void forChildren1(){
