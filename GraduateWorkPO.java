@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import static com.codeborne.selenide.AssertionMode.SOFT;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
+
 @ExtendWith({SoftAssertsExtension.class})
 public class GraduateWorkPO {
     @BeforeAll
@@ -22,6 +22,16 @@ public class GraduateWorkPO {
     @BeforeEach
     public void beforeEach() {
         open("");
+        for (int i=0; i<=100; i++) {
+            if ($(".demo-popup__cancel").isDisplayed()) {
+                $(".demo-popup__cancel").click();
+                break;
+            }
+            else {
+                System.out.println("Ждём: " + i);
+                sleep(1_000);
+            }
+        }
     }
     @Test
     void order_a_call_back(){
