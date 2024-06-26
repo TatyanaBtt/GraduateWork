@@ -25,12 +25,18 @@ public class TopAcademyTest {
 
 
         open("https://msk.top-academy.ru");
-        //sleep(10_000);
-        if ($(".demo-popup__cancel").exists()) {
-            $(".demo-popup__cancel").click();
+        for (int i=0; i<=100; i++) {
+            if ($(".demo-popup__cancel").isDisplayed()) {
+                $(".demo-popup__cancel").click();
+                break;
+            }
+            else {
+                System.out.println("Ждём: " + i);
+                sleep(1_000);
+            }
         }
 
-        sleep(1_000);
+
         if ($(".cookies-confirm").exists()) {
             $(".cookies-confirm").click();
         }
@@ -54,12 +60,18 @@ public class TopAcademyTest {
 
 
         open("https://msk.top-academy.ru");
-        sleep(10_000);
-        if ($(".demo-popup__cancel").exists()) {
-            $(".demo-popup__cancel").click();
+        for (int i=0; i<=100; i++) {
+            if ($(".demo-popup__cancel").isDisplayed()) {
+                $(".demo-popup__cancel").click();
+                break;
+            }
+            else {
+                System.out.println("Ждём: " + i);
+                sleep(1_000);
+            }
         }
 
-        sleep(1_000);
+
         if ($(".cookies-confirm").exists()) {
             $(".cookies-confirm").click();
             $(byText("Контакты")).click();
@@ -75,12 +87,16 @@ public class TopAcademyTest {
 
 
         open("https://msk.top-academy.ru");
-        sleep(10_000);
-        if ($(".demo-popup__cancel").exists()) {
-            $(".demo-popup__cancel").click();
+        for (int i=0; i<=100; i++) {
+            if ($(".demo-popup__cancel").isDisplayed()) {
+                $(".demo-popup__cancel").click();
+                break;
+            }
+            else {
+                System.out.println("Ждём: " + i);
+                sleep(1_000);
+            }
         }
-
-        sleep(1_000);
         if ($(".cookies-confirm").exists()) {
             $(".cookies-confirm").click();
         }
