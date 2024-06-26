@@ -1,4 +1,3 @@
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.junit5.SoftAssertsExtension;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -27,13 +26,13 @@ public class TopTests {
     }
 
     @Test
-    void oneTest() {
+    void OneTest() {
         open(baseUrl);
         sleep(50000);
 
         $(byText("Принять")).click();
-        $("#menu__link.menu__link--hiddenMob.menu__link--active.font_lang_ru").click();
-        $("#academy_app header div div.header__bottom nav ul li:nth-child(2) div.mobile-list-adult-education.accordeon ul li:nth-child(1) a").click();
+        //$(byText("Очное обучение")).click();
+        $(By.cssSelector("[href='/IT_courses_for_adults']")).click();
         $(byText("обучения для взрослых")).shouldBe(visible);
         $(byText("Курс: Тестирование ПО (QA)")).click();
         $(byText("Забронируй обучение в июне и получи курс в подарок")).shouldBe(visible);
@@ -52,12 +51,12 @@ public class TopTests {
     }
 
     @Test
-    void SeeTest() {
+    void ThreeTest() {
 
         open("https://msk.top-academy.ru/");
         sleep(10000);
         $(byText("Принять")).click();
-        $(By.xpath("//a[@href=/graphic_designer']")).click();
+        $(By.xpath("//a[@href=/graphic_designer]")).click();
         $(byText("Актуальность, профессионализм, забота")).shouldBe(exist);
         $(byText("Помощь в трудоустройстве ")).shouldBe(exist);
 
